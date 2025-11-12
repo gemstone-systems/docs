@@ -43,7 +43,7 @@ const clientLoader = createClientLoader(docs.doc, {
     id: "docs",
     component({ toc, frontmatter, default: MDX }) {
         return (
-            <DocsPage toc={toc} tableOfContent={{style: "clerk"}}>
+            <DocsPage toc={toc} tableOfContent={{ style: "clerk" }}>
                 <DocsTitle>{frontmatter.title}</DocsTitle>
                 <DocsDescription>{frontmatter.description}</DocsDescription>
                 <DocsBody>
