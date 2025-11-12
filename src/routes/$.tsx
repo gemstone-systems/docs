@@ -15,7 +15,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { createClientLoader } from "fumadocs-mdx/runtime/vite";
 import { baseOptions } from "@/lib/layout.shared";
 
-export const Route = createFileRoute("/docs/$")({
+export const Route = createFileRoute("/$")({
     component: Page,
     loader: async ({ params }) => {
         const slugs = params._splat?.split("/") ?? [];

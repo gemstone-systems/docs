@@ -19,7 +19,7 @@ export const Route = createRootRoute({
                 content: "width=device-width, initial-scale=1",
             },
             {
-                title: "Gemstone Documentation | Gemstone Systems",
+                title: `${import.meta.env.DEV ? "(dev) " : ""}Gemstone Documentation | Gemstone Systems`,
             },
         ],
         links: [{ rel: "stylesheet", href: appCss }],
