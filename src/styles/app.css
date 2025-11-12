@@ -1,3 +1,10 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/purple.css";
 @import "fumadocs-ui/css/preset.css";
+@import "@fontsource-variable/lexend";
+@import "@fontsource/maple-mono";
+
+@theme inline {
+    --font-sans: "Lexend", sans-serif;
+    --font-mono: "Maple Mono", monospace;
+}

@@ -7,6 +7,8 @@ import {
 } from "@tanstack/react-router";
 import appCss from "../styles/app.css?url";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
+import '@fontsource/maple-mono'
+import '@fontsource-variable/lexend'
 
 export const Route = createRootRoute({
     head: () => ({

@@ -11,6 +11,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/lexend':
+        specifier: ^5.2.11
+        version: 5.2.11
+      '@fontsource/maple-mono':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@tailwindcss/vite':
         specifier: ^4.1.17
         version: 4.1.17(rolldown-vite@7.2.4(@types/node@24.7.1)(esbuild@0.25.12)(jiti@2.6.1)(tsx@4.20.6))
@@ -605,6 +611,12 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fontsource-variable/lexend@5.2.11':
+    resolution: {integrity: sha512-0hgEQ4O7Nh8fxL/WWmspJf0BErbocRkZwtLRGey/V4mUUqxfF7QUwqhcdzwpjom3NYCniY4uzQ5wYD7r9/92tQ==}
+
+  '@fontsource/maple-mono@5.2.6':
+    resolution: {integrity: sha512-+VAD7z8nyTkaiz2/Ww639Z5Kp/YJIL4dNMQxydqSMafNb5nKxFeoRq6W3g9WJ04IcBjdBmn0dKFNk90lyz7K+w==}
 
   '@formatjs/intl-localematcher@0.6.2':
     resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
@@ -3420,6 +3432,10 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fontsource-variable/lexend@5.2.11': {}
+
+  '@fontsource/maple-mono@5.2.6': {}
 
   '@formatjs/intl-localematcher@0.6.2':
     dependencies:

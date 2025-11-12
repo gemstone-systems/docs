@@ -29,6 +29,8 @@
         "vite-tsconfig-paths": "^5.1.4"
     },
     "dependencies": {
+        "@fontsource-variable/lexend": "^5.2.11",
+        "@fontsource/maple-mono": "^5.2.6",
         "@tailwindcss/vite": "^4.1.17",
         "@tanstack/react-router": "^1.135.2",
         "@tanstack/react-start": "^1.135.2",
