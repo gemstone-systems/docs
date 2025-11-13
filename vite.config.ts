@@ -17,7 +17,7 @@ export default defineConfig({
         }),
         tanstackStart({
             prerender: {
-                enabled: true,
+                enabled: false,
             },
         }),
         // react's vite plugin must come after start's vite plugin
