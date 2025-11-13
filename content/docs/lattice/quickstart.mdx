@@ -1,0 +1,162 @@
+---
+title: Getting Started
+---
+
+If you would like to host a Lattice on your own, this is how.
+
+## Methods
+
+There are two methods of self-hosting. We provide first-class support for both.
+
+- [Docker](/lattice/quickstart#docker) (this is what we use)
+- [Nix](/lattice/quickstart#nix)
+
+---
+
+## Docker
+
+This section describes how to host a Lattice with Docker.
+
+### Requirements
+
+- A VPS or container service like ECS.
+- A domain to access the Lattice (e.g. `lattice.gmstn.systems`).
+
+### Setup
+
+#### Environment
+
+Copy the [example `.env` file](https://github.com/gemstone-systems/lattice/blob/main/.example.env) into a directory on your VPS, or provide it as secrets to your container service.
+
+<Callout title="Important">
+    Ensure that you strip the quotes in the values of the `.env` file!
+</Callout>
+
+Ensure that the `SERVICE_DID` and `OWNER_DID` fields are set correctly.
+
+Currently, you will need to manually specify the `NODE_ENV` as well, but in future we will change this to be redundant if running in production.
+
+#### Running the container
+
+This is an example compose file.
+
+```yaml
+services:
+    app:
+        image: ghcr.io/gemstone-systems/lattice:latest
+        container_name: my-lattice
+        restart: unless-stopped
+        env_file:
+            - .env
+        ports:
+            - "7338:7338"
+```
+
+This should be provided in the same directory as your `.env` file as `docker-compose.yaml`.
+
+Once you've provided both, you may simply `docker compose up -d` to run the Lattice as a container.
+
+Alternatively, wherever you have provided the `.env` file, you may run
+
+```bash
+docker run -d \
+  --name my-lattice \
+  --restart unless-stopped \
+  --env-file .env \
+  -p 7338:7338 \
+  ghcr.io/gemstone-systems/lattice:latest
+```
+
+#### Verify
+
+You can check to see if the Lattice is accessible at the health check endpoint `/xrpc/_health`.
+
+```bash
+curl https://lattice.example.com/xrpc/_health
+```
+
+If you receive a response from your own Lattice, you can proceed with registration.
+
+<Callout title="Important">
+    Remember to configure Caddy/nginx for the port as well!
+</Callout>
+
+#### Registration
+
+Log in to the [client app](https://app.gmstn.systems/).
+
+Under Settings > Lattices, you can register your Lattice. If everything checks out, there should be a green badge with a tick in it.
+
+#### Channels
+
+If you've registered the Lattice, then you're done! You can proceed to create channels that route through your Lattice. Just specify it when you're creating the channel.
+
+---
+
+## Nix
+
+Nix support is still unstable and is likely to change.
+
+This section describes how to host a Lattice with Nix.
+
+### Requirements
+
+- A VPS running NixOS.
+- Flakes enabled on that system.
+- A domain to access the Lattice (e.g. `lattice.gmstn.systems`).
+
+### Setup [TBD]
+
+Basically the same as doing dev for now. In the future, we will provide a flake input and NixOS module for configuration.
+
+#### Clone
+
+Clone the repository. `git clone https://github.com/gemstone-systems/lattice`
+
+#### Environment
+
+Copy the example environment variables file into `.env` and provide your own values.
+
+Ensure that the `SERVICE_DID` and `OWNER_DID` fields are set correctly.
+
+Currently, you will need to manually specify the `NODE_ENV` as well, but in future we will change this to be redundant if running in production.
+
+#### Running the service
+
+Simply enter the folder and `nix run .`.
+
+The flake will install the required dependencies, build the project, and serve it at the specified port in the `.env` file.
+
+#### Verify
+
+You can check to see if the Lattice is accessible at the health check endpoint `/xrpc/_health`.
+
+```bash
+curl https://lattice.example.com/xrpc/_health
+```
+
+If you receive a response from your own Lattice, you can proceed with registration.
+
+<Callout title="Important">
+    Remember to configure Caddy/nginx for the port as well!
+</Callout>
+
+#### Registration
+
+Log in to the [client app](https://app.gmstn.systems/).
+
+Under Settings > Lattices, you can register your Lattice. If everything checks out, there should be a green badge with a tick in it.
+
+#### Channels
+
+If you've registered the Lattice, then you're done! You can proceed to create channels that route through your Lattice. Just specify it when you're creating the channel.
+
+---
+
+## Notes
+
+As mentioned, Nix support is still unstable and rather bad at the moment. This will improve once Lattice as a project stabilises as well.
+
+## Support
+
+If you have any further questions or suggestions, come join us on [Gemstone](https://app.gmstn.systems/)! Development work for Gemstone takes place on Gemstone.

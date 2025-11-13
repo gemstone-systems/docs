@@ -1,0 +1,42 @@
+---
+title: Lattices
+---
+
+A Gemstone Lattice is a routing server that clients interact with for real time-related matters. Currently, it only supports messages, but in future, it will also support voice and video chats.
+
+Lattices act as an intermediary between a client, other clients, and the [Shard](/shard) storage server.
+
+Anything that requires real-time synchronisation of state through WebSockets is likely done through Lattice.
+
+## Do I need to host a Lattice to use Gemstone?
+
+No. You are free to use the publicly available Lattice(s) for your own channels and spaces.
+
+However, hosting a Lattice means a few things.
+
+- Complete privacy. (Not E2EE (yet, maybe))
+- Complete ownership.
+
+## How does it work?
+
+The following is fairly technical information. Feel free to skip it if you're not interested in how it works.
+
+When you start up the Gemstone client, it initially reads data from both your own PDS and our [Prism](/prism) API.
+
+Using that information, it resolves the DID documents to service endpoints and initiates a [handshake](/lexicons/systems.gmstn.auth.handshake) between the client and the Lattices described in the channels that you are in.
+
+If the handshake succeeds, you are connected with the Lattice and can chat with others that are also on that Lattice. The client can switch seamlessly between multiple Lattices as well.
+
+### Lattice/Shard Trust
+
+When a Lattice instance is setup, it also does an initial request from the owner's PDS and Prism. If there are channels that describe that Lattice and a target Shard, it does a few other checks to ensure that the Shard is allowed to talk to this Lattice.
+
+If it does, the Lattice and the Shard also make a handshake of their own, and any data regarding that channel is routed to the correct Shard.
+
+### Record Updates
+
+Lattices also subscribe to the Jetstream-compatible endpoint on Prism (which does verification, filtering, other ATProto stuff) and receives events as they are emitted by the Relay.
+
+When a new channel is described by a user, if the record is owned by a DID that is authorised to do so by Lattice permissions and privacy, it will modify existing connections to Shards or initiate new handshakes and connections to other Shards.
+
+Similarly, when new invites and memberships are created by DIDs that are allowed to do so for that Lattice, the Lattice will modify existing client connections and return the correct information to the client.
