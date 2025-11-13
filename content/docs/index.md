@@ -1,14 +1,12 @@
 ---
-title: Gemstone Documentation
+title: Introduction
 ---
 
 Welcome friend! This is where you'll find documentation regarding Gemstone and all of its associated pieces.
 
 If you want to simply try out Gemstone, you can head to [the app](https://app.gmstn.systems) and log in with your ATProto account through your PDS to get started.
 
-## Introduction
-
-### What is Gemstone?
+## What is Gemstone?
 
 Gemstone is a workspace app built on top of [ATProto](https://atproto.com), designed from the ground up for you to get the productivity benefits of the workspace apps that you're familiar with, but with none of the lock in and as little of the overhead as possible.
 
