@@ -15,6 +15,7 @@
     "packageManager": "pnpm@10.18.0",
     "devDependencies": {
         "@eslint/js": "^9.37.0",
+        "@netlify/vite-plugin-tanstack-start": "^1.1.12",
         "@types/node": "^24.7.1",
         "@types/react": "^19.2.3",
         "@types/react-dom": "^19.2.3",

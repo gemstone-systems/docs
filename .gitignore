@@ -5,3 +5,6 @@
 *.tsbuildinfo
 /.tanstack
 /.source
+
+# Local Netlify folder
+.netlify
