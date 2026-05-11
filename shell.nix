@@ -5,7 +5,7 @@
   # extra tooling
   eslint_d,
   prettierd,
-  nodejs_24,
+  deno,
   pnpm,
   typescript,
   typescript-language-server,
@@ -21,7 +21,7 @@ mkShellNoCC {
   packages = [
     eslint_d
     prettierd
-    nodejs_24
+    deno
     pnpm
     typescript
     typescript-language-server
